@@ -103,6 +103,6 @@ export function isDealershipLocation(obj: CosmicObject): obj is DealershipLocati
   return obj.type === 'dealership-locations';
 }
 
-// Utility types for common patterns
-export type OptionalMetadata<T> = Partial<T['metadata']>;
+// Utility types for common patterns - Fixed generic constraint
+export type OptionalMetadata<T extends { metadata: any }> = Partial<T['metadata']>;
 export type CreateSportsCarData = Omit<SportsCar, 'id' | 'created_at' | 'modified_at'>;
