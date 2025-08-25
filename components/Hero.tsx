@@ -7,11 +7,11 @@ interface HeroProps {
 export default function Hero({ totalCars }: HeroProps) {
   return (
     <section className="relative bg-background overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image - Updated to Lamborghini */}
       <div className="absolute inset-0">
         <img
-          src="https://imgix.cosmicjs.com/f5856950-a455-11ed-81f2-f50e185dd248-NRQV-hBF10M.jpg?w=1920&h=1080&fit=crop&auto=format,compress"
-          alt="Luxury Sports Car"
+          src="https://imgix.cosmicjs.com/e27b3da0-81fa-11f0-b0ac-f12686cb9ade-photo-1544636331-e26879cd4d9b-1756157498897.jpg?w=1920&h=1080&fit=crop&auto=format,compress"
+          alt="Lamborghini Huracán EVO"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
