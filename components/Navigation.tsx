@@ -11,7 +11,7 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="bg-background border-b border-border">
+    <nav className="bg-background border-b border-border fixed top-0 left-0 right-0 z-50">
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
