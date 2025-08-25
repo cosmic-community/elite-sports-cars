@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: 'Elite Sports Car Gallery | Premium Luxury Vehicles',
   description: 'Discover our exclusive collection of premium sports cars from Ferrari, Lamborghini, Porsche and more. Professional sales team and exceptional service.',
   keywords: 'sports cars, Ferrari, Lamborghini, Porsche, luxury vehicles, premium cars',
+  icons: {
+    icon: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏎️</text></svg>',
+  },
 }
 
 export default function RootLayout({

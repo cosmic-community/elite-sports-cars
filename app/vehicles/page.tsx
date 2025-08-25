@@ -1,32 +1,34 @@
 import { getSportsCars } from '@/lib/cosmic'
 import VehicleGrid from '@/components/VehicleGrid'
-import VehicleFilters from '@/components/VehicleFilters'
+
+export const metadata = {
+  title: 'Our Vehicle Collection | Elite Sports Cars',
+  description: 'Browse our exclusive collection of premium sports cars from Ferrari, Lamborghini, Porsche and other luxury manufacturers.',
+}
 
 export default async function VehiclesPage() {
   const cars = await getSportsCars()
 
-  if (!cars || cars.length === 0) {
-    return (
-      <div className="container-custom py-16">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold mb-4">Our Vehicle Collection</h1>
-          <p className="text-gray-400">No vehicles available at the moment.</p>
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Header Section */}
+      <div className="bg-card border-b border-border py-16">
+        <div className="container-custom">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Vehicle Collection</h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Explore our exclusive selection of premium sports cars from the world's most prestigious manufacturers.
+            </p>
+          </div>
         </div>
       </div>
-    )
-  }
 
-  return (
-    <div className="container-custom py-16">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">Our Vehicle Collection</h1>
-        <p className="text-xl text-gray-400 max-w-2xl">
-          Explore our exclusive selection of premium sports cars from the world's most prestigious manufacturers.
-        </p>
+      {/* Vehicle Grid */}
+      <div className="py-16">
+        <div className="container-custom">
+          <VehicleGrid cars={cars} />
+        </div>
       </div>
-      
-      <VehicleFilters cars={cars} />
-      <VehicleGrid cars={cars} />
     </div>
   )
 }
