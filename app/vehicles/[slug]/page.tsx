@@ -2,35 +2,47 @@
 import { notFound } from 'next/navigation'
 import { getSportsCarBySlug } from '@/lib/cosmic'
 import VehicleDetail from '@/components/VehicleDetail'
-import type { Metadata } from 'next'
 
-interface VehiclePageProps {
-  params: Promise<{ slug: string }>
+interface PageProps {
+  params: Promise<{
+    slug: string
+  }>
 }
 
-export async function generateMetadata({ params }: VehiclePageProps): Promise<Metadata> {
+export default async function VehiclePage({ params }: PageProps) {
+  // In Next.js 15+, params is a Promise and must be awaited
   const { slug } = await params
-  const car = await getSportsCarBySlug(slug)
-
-  if (!car) {
-    return {
-      title: 'Vehicle Not Found',
-    }
+  
+  if (!slug) {
+    notFound()
   }
 
-  return {
-    title: `${car.metadata.year} ${car.metadata.make} ${car.metadata.model} | Elite Sports Car Gallery`,
-    description: car.metadata.description || `${car.metadata.year} ${car.metadata.make} ${car.metadata.model} for sale`,
-  }
-}
-
-export default async function VehiclePage({ params }: VehiclePageProps) {
-  const { slug } = await params
   const car = await getSportsCarBySlug(slug)
 
   if (!car) {
     notFound()
   }
 
-  return <VehicleDetail car={car} />
+  return (
+    <div className="min-h-screen">
+      <VehicleDetail vehicle={car} />
+    </div>
+  )
+}
+
+// Generate metadata for SEO
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params
+  const car = await getSportsCarBySlug(slug)
+
+  if (!car) {
+    return {
+      title: 'Vehicle Not Found - Elite Sports Cars',
+    }
+  }
+
+  return {
+    title: `${car.metadata.year} ${car.metadata.make} ${car.metadata.model} - Elite Sports Cars`,
+    description: car.metadata.description || `${car.metadata.year} ${car.metadata.make} ${car.metadata.model} available at Elite Sports Cars`,
+  }
 }
